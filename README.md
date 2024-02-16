@@ -1,6 +1,6 @@
-# BANALL
+# 𝗗𝗘𝗟𝗘𝗧𝗘 𝗕𝗢𝗧
 GAAND FAAD BANALL ,FOR WORE QUERIES CHECK OUT MY REPOSITORY
-<h1 align="center"> 𝗕𝗔𝗡 𝗔𝗟𝗟 𝗕𝗬 ϻͣ  ≛⃝🇼𝔼𝔼𝔻𝕃𝔼𝔸𝔽 ⋆‌⃝💔─⃛͢⋆</h1>
+<h1 align="center"> 𝗕𝗢𝗧 𝗠𝗔𝗗𝗘 𝗕𝗬 𝗜𝗡𝗗𝗜𝗔𝗡 𝗛𝗔𝗖𝗞𝗘𝗥𝗦 𝗧𝗘𝗔𝗠⋆</h1>
 
 <p align="center"><a href="https://t.me/gamingggggg3"><img src="https://te.legra.ph/file/84e5452b231d4826fcf25.jpg" width="400"></a></p>
 
