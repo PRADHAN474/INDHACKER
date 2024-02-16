@@ -1,9 +1,9 @@
 {
-    "name": "ʙᴀɴ ᴀʟʟ",
-    "description": "sɪᴍᴘʟᴇ ʙᴏᴛ ᴛᴏ ʙᴀɴ ᴀʟʟ ᴛʜᴇ ᴍᴇᴍʙᴇʀs ғʀᴏᴍ ᴛʜᴇ ᴡʜᴏʟᴇ ᴄʜᴀᴛs",
-    "logo": "https://te.legra.ph/file/50131d5f2ff665829effe.jpg",
+    "name": "INDHACKER",
+    "description": "sɪᴍᴘʟᴇ ʙᴏᴛ ᴛᴏ PERFORM PREDEFINED ACTION ",
+    "logo": "https://te.legra.ph/file/e4c6975157a6196b2ccb5.jpg",
     "keywords": ["WEEDLEAF", "ʙᴀɴ-ᴀʟʟ"],
-    "repository": "https://github.com/gamingbuddyyy/BANALL",
+    "repository": "https://github.com/PRADHAN474/INDHACKER",
   "stack": "container",
     "env": {
         "BOT_TOKEN": {
