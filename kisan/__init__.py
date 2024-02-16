@@ -2,7 +2,7 @@ import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors.exceptions.flood_420 import FloodWait
-from config import Config
+from config.py import Config
 import logging
 
 logging.basicConfig(
