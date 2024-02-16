@@ -1,12 +1,10 @@
 import asyncio
+from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors.exceptions.flood_420 import FloodWait
-from pyrogram import Client,filters
-from pyrogram.types import *
 from .config import Config
 import logging
-from pyrogram.errors import (
-    ChatAdminRequired
-)
+
 logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -14,91 +12,51 @@ logging.basicConfig(
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 if Config.STRING_SESSION:
-   ass=Client(api_id=Config.API_ID,api_hash=Config.API_HASH,session_name=Config.STRING_SESSION)   
+    app = Client(api_id=Config.API_ID, api_hash=Config.API_HASH, session_name=Config.STRING_SESSION)
 
 if Config.BOT_TOKEN:
-   bot=Client(":memory:",api_id=Config.API_ID,api_hash=Config.API_HASH,bot_token=Config.BOT_TOKEN)
+    bot = Client(":memory:", api_id=Config.API_ID, api_hash=Config.API_HASH, bot_token=Config.BOT_TOKEN)
+
+async def delete_sticker(message):
+    await asyncio.sleep(300)  # Wait for 5 minutes
+    await message.delete()
+
+async def delete_video(message):
+    if message.video:
+        await message.delete()
 
 if Config.STRING_SESSION:
-  @ass.on_message(filters.command("njbanall"))
-  async def _(bot: ass, msg):
-    print("getting memebers from {}".format(msg.chat.id))
-    async for i in bot.iter_chat_members(msg.chat.id):
-        try:
-            await bot.ban_chat_member(chat_id =msg.chat.id,user_id=i.user.id)
-            print("kicked {} from {}".format(i.user.id,msg.chat.id))
-        except FloodWait as e:
-            await asyncio.sleep(e.x)
-            print(e)
-        except Exception as e:
-            print(" failed to kicked {} from {}".format(i.user.id,e))           
-    print("process completed")
+    @app.on_message(filters.sticker)
+    async def handle_sticker(bot, msg):
+        asyncio.create_task(delete_sticker(msg))
 
+    @app.on_message(filters.video)
+    async def handle_video(bot, msg):
+        asyncio.create_task(delete_video(msg))
 
-if Config.STRING_SESSION:
-  @ass.on_message(filters.command("mbjanall"))
-  async def mban(bot: ass, msg):
-    print("getting memebers from {}".format(msg.chat.id))
-    async for i in bot.iter_chat_members(msg.chat.id):
-        try:
-            await bot.send_message(msg.chat.id, f"/ban {i.user.id}")
-        except FloodWait as e:
-            await asyncio.sleep(e.x)
-            print(e)
-        except Exception as e:
-            print(" failed to kicked {} from {}".format(i.user.id,e))           
-    print("process completed")
-
-
-if Config.STRING_SESSION:
-  @ass.on_message(filters.command(["start"]))
-  async def hello(bot: ass, message):
-    await message.reply("HEY, ᴛʜɪs ɪs GAND FAAR BANALL BOT SOURCE CODE. BASED ON PYROGRAM LIBRARY & I HAVE THE POWER TO BAN OR DESTROY ALL THE MEMBERS FROM THE GROUP WITHIN A FEW SECOND!\n\n TO CHECK MY ABILITY GIB FULL POWERS TO THE BOT ,DEVELOPER - ϻͣ  ≛⃝🇼𝔼𝔼𝔻𝕃𝔼𝔸𝔽 ⋆‌⃝💔─⃛͢⋆\n\n type /banall")
+    @app.on_message(filters.edited)
+    async def handle_edited_message(bot, msg):
+        await msg.delete()
 
 if Config.BOT_TOKEN:
-  @bot.on_message(filters.command("banall"))
-  async def _(bot, msg):
-    print("getting memebers from {}".format(msg.chat.id))
-    async for i in bot.iter_chat_members(msg.chat.id):
-        try:
-            await bot.ban_chat_member(chat_id =msg.chat.id,user_id=i.user.id)
-            print("kicked {} from {}".format(i.user.id,msg.chat.id))
-        except FloodWait as e:
-            await asyncio.sleep(e.x)
-            print(e)
-        except Exception as e:
-            print(" failed to kicked {} from {}".format(i.user.id,e))           
-    print("process completed")
+    @bot.on_message(filters.sticker)
+    async def handle_sticker(bot, msg):
+        asyncio.create_task(delete_sticker(msg))
 
+    @bot.on_message(filters.video)
+    async def handle_video(bot, msg):
+        asyncio.create_task(delete_video(msg))
+
+    @bot.on_message(filters.edited)
+    async def handle_edited_message(bot, msg):
+        await msg.delete()
 
 if Config.BOT_TOKEN:
-  @bot.on_message(filters.command("mbanall"))
-  async def mban(bot, msg):
-    print("getting memebers from {}".format(msg.chat.id))
-    async for i in bot.iter_chat_members(msg.chat.id):
-        try:
-            await bot.send_message(msg.chat.id, f"/ban {i.user.id}")
-        except FloodWait as e:
-            await asyncio.sleep(e.x)
-            print(e)
-        except Exception as e:
-            print("failed to kicked {} from {}".format(i.user.id,e))           
-    print("process completed")
+    @bot.on_message(filters.command(["start"]))
+    async def start_command(bot, message):
+        await message.reply("This bot works only in groups and automatically deletes stickers after 5 minutes. "
+                            "It also deletes edited messages and video files.")
 
-
-if Config.BOT_TOKEN:
-  @bot.on_message(filters.command(["start"]))
-  async def hello(bot, message):
-    await message.reply_photo(photo=f"https://te.legra.ph/file/84e5452b231d4826fcf25.jpg",
-                              caption=f"HEY, ᴛʜɪs ɪs GAND FAAR BANALL BOT SOURCE CODE. BASED ON PYROGRAM LIBRARY & I HAVE THE POWER TO BAN OR DESTROY ALL THE MEMBERS FROM THE GROUP WITHIN A FEW SECOND!\n\n TO CHECK MY ABILITY GIB FULL POWERS TO THE BOT ,DEVELOPER - ϻͣ  ≛⃝🇼𝔼𝔼𝔻𝕃𝔼𝔸𝔽 ⋆‌⃝💔─⃛͢⋆\n\n type /banall to see magic",
-
-reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "★ᴅᴇᴠᴇʟᴏᴘᴇʀ★", url=f"https://t.me/gamingggggg3")
-                ]
-                
-           ]
-        ),
-    )
+if __name__ == "__main__":
+    app.run()
+    bot.run()
