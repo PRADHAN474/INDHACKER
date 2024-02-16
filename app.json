@@ -1,25 +1,14 @@
-{
+ {
     "name": "INDHACKER",
     "description": "sɪᴍᴘʟᴇ ʙᴏᴛ ᴛᴏ PERFORM PREDEFINED ACTION ",
     "logo": "https://te.legra.ph/file/e4c6975157a6196b2ccb5.jpg",
     "keywords": ["WEEDLEAF", "ʙᴀɴ-ᴀʟʟ"],
     "repository": "https://github.com/PRADHAN474/INDHACKER",
-  "stack": "container",
+    "stack": "container",
     "env": {
         "BOT_TOKEN": {
             "description": "ɢᴇᴛ ʏᴏᴜʀ ʙᴏᴛ ᴛᴏᴋᴇɴ ғʀᴏᴍ @ʙᴏᴛғᴀᴛʜᴇʀ ɪɴ ᴛɢ",
             "required": true
-        },
-        "API_HASH": {
-            "description": "ɢᴇᴛ ᴛʜɪs ᴠᴀʀɪᴀʙʟᴇ ғʀᴏᴍ ᴛᴇʟᴇɢʀᴀᴍ.ᴏʀɢ",
-            "required": true,
-            "value": ""
-        },
-        "API_ID": {
-            "description": "ғɪʟʟ ᴀᴘɪ ɪᴅ ғʀᴏᴍ ᴛᴇʟᴇɢʀᴀᴍ.ᴏʀɢ",
-            "required": true,
-            "value": ""
         }
-
     }
-  }
+}
